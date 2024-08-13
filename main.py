@@ -1,14 +1,23 @@
+# %% [markdown]
+# ### import
+
 # %%
 import warnings
-warnings.filterwarnings('ignore')
 
+warnings.filterwarnings("ignore")  # Ignore warnings
+
+# Standard libraries
 import os
-import yfinance as yf
-import pandas as pd
 import numpy as np
+import pandas as pd
+
+# Data visualization
 import matplotlib.pyplot as plt
 import seaborn as sns
-sns.set_style('whitegrid')
+sns.set_style("whitegrid")
+
+# Financial data
+import yfinance as yf
 
 # Technical Analysis
 from talib import RSI, BBANDS, ATR, NATR, MACD
@@ -19,34 +28,35 @@ from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.linear_model import LinearRegression, LogisticRegression
 from sklearn.svm import SVR, SVC
 from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier
-from sklearn.metrics import mean_absolute_error, mean_squared_error, accuracy_score, classification_report, roc_curve, auc
+from sklearn.metrics import (
+    mean_absolute_error,
+    mean_squared_error,
+    accuracy_score,
+    classification_report,
+    roc_curve,
+    auc,
+)
 from sklearn.compose import ColumnTransformer
 from sklearn.neighbors import KNeighborsClassifier
 
-
+# XGBoost
 import xgboost as xgb
 from xgboost import XGBRegressor, XGBClassifier
+
 import joblib
 
-# neural network
+# Neural Network
 from tqdm import tqdm
 import torch
 import torch.nn as nn
-  # our model
-from LSTM1 import StockLSTM1
-from LSTM1 import LSTM1_stock_predict
-from LSTM1 import LSTMdataset1
-from LSTM2 import StockLSTM2
-from LSTM2 import LSTM2_stock_predict
-from LSTM2 import LSTMdataset2
-from GRU1 import StockGRU1
-from GRU1 import GRU1_stock_predict
-from GRU1 import GRUdataset1
-from GRU2 import StockGRU2
-from GRU2 import GRU2_stock_predict
-from GRU2 import GRUdataset2
-# Feature important
-import FeatureImportance
+  # custom models
+from scripts.LSTM1 import StockLSTM1, LSTM1_stock_predict, LSTMdataset1
+from scripts.LSTM2 import StockLSTM2, LSTM2_stock_predict, LSTMdataset2
+from scripts.GRU1 import StockGRU1, GRU1_stock_predict, GRUdataset1
+from scripts.GRU2 import StockGRU2, GRU2_stock_predict, GRUdataset2
+
+# Custom Feature importance
+import scripts.FeatureImportance
 
 # %% [markdown]
 # # Data Preprocessing
@@ -74,7 +84,7 @@ end_date = '2024-05-01'
 df_prices_download = yf.download(tickers=tickers, start=start_date, end=end_date, group_by='ticker')
 
 # %% [markdown]
-# 
+#
 
 # %%
 # Format into large table
@@ -345,7 +355,7 @@ print(norm_evaluate.shape)
 # %% [markdown]
 # ## Train-Test Split
 # **Strategy:** Simple Split
-# 
+#
 # Split arrays or matrices into random train and test subsets.
 
 # %% [markdown]
@@ -382,7 +392,7 @@ print("Test Set:", X_test_bool.shape, y_test_bool.shape)
 
 # %% [markdown]
 # ## Train Model
-# 
+#
 # Training models without hyperparameter tuning for improvement comparision.
 
 # %%
@@ -495,7 +505,7 @@ for name, model in models.items():
     else:
         model.fit(X_train, y_train)
         y_pred_test = model.predict(X_test)
-    
+
     mae = np.mean(np.abs(y_test.values - y_pred_test))
     mse = np.mean((y_test.values - y_pred_test) ** 2)
     rmse = np.sqrt(mse)
@@ -596,7 +606,7 @@ for name, metrics in classifier_results.items():
 # %% [markdown]
 # # Hyper Parameter Tuning
 # **Strategy**: Grid Search CV
-# 
+#
 # Exhaustive search over specified parameter values for an estimator.
 
 # %% [markdown]
@@ -1267,7 +1277,7 @@ def get_feature_importance(model, feature_names=None):
         df = df.abs()
         df = df.sort_values(by='Importance', ascending=False)
         return df
-    
+
     else:
         print("Warning: Model doesn't have coef_ attribute. Feature importance cannot be extracted.")
         return None
