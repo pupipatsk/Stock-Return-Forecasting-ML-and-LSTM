@@ -2,9 +2,16 @@
 
 A pattern recognition project for predicting stock return from historical data using multiple machine learning models and techniques.
 
-See the slide [Here](https://github.com/Nacnano/stock-machine-learning-project/blob/main/Presentation%20Slide.pdf).
+See the slide [Here](Presentation.pdf).
 
 **Dataset**: S&P500, Yahoo Finance - [yfinance](https://pypi.org/project/yfinance/)
+
+```shell
+pip install -r requirements.txt
+```
+
+This will install all the necessary packages listed in the `requirements.txt` file.
+
 
 ## Outline
 
@@ -44,7 +51,7 @@ See the slide [Here](https://github.com/Nacnano/stock-machine-learning-project/b
 
 ## Contributors
 
+- [pupipatsk](https://github.com/pupipatsk) (Get)
 - [warboo](https://github.com/warboo) (Veeliw)
 - [markthitrin](https://github.com/markthitrin) (Mark)
-- [pupipatsk](https://github.com/pupipatsk) (Get)
 - [Nacnano](https://github.com/nacnano) (Nac)
