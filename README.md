@@ -3,7 +3,7 @@ This project focuses on forecasting stock returns from historical data using var
 
 Presentation Slide: [View Presentation](Presentation.pdf)
 
-**Dataset**:S&P 500 data from Yahoo Finance, accessed via [yfinance](https://pypi.org/project/yfinance/)
+**Dataset**: S&P 500 data from Yahoo Finance, accessed via [yfinance](https://pypi.org/project/yfinance/)
 
 
 ## Outline
@@ -50,8 +50,7 @@ To install the necessary packages, run:
 ```shell
 pip install -r requirements.txt
 ```
-This will install all the necessary packages listed in the `requirements.txt` file.\
-For PyTorch installation, please visit pytorch.org for specific instructions.
+For PyTorch installation, please visit [pytorch.org](https://pytorch.org/) for specific instructions.
 
 ## Directory Structure
 ```txt
