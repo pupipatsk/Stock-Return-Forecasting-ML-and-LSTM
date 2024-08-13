@@ -1,0 +1,16 @@
+# General dependencies
+pandas
+numpy
+matplotlib
+seaborn
+yfinance
+tqdm
+joblib
+# torch # download at https://pytorch.org/
+xgboost
+
+# Technical Analysis
+TA-Lib
+
+# scikit-learn
+scikit-learn
